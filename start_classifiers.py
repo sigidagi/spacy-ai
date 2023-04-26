@@ -1,14 +1,17 @@
 #!/usr/bin/env python
 
+from typing import Optional, List
 import spacy
 import classy_classification
 import uvicorn
-import dataset
 
 from fastapi import FastAPI
-from typing import Optional
 from pydantic import BaseModel
 
+import dataset
+
+
+# ---------- SpaCy NLP implementation ------------------
 
 nlp_spacy = spacy.blank("en")
 nlp_spacy.add_pipe("text_categorizer",
@@ -19,9 +22,12 @@ nlp_spacy.add_pipe("text_categorizer",
                  "device": "gpu",
                  "multi_label": True,
              })
-
+# ----------------------------------------------------
 
 class Utterance(BaseModel):
+    """
+    Acceptecd incomming model
+    """
     text: str
     intent: Optional[str] = None
 
@@ -29,13 +35,21 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    """
+    Just a REST test
+    """
+    return [{"message": "Hello", "intent": "World"}]
 
 @app.post("/spacy")
-async def sentence(utterance: Utterance):
-    print(utterance.text)
-    categories = nlp_spacy(utterance.text)._.cats
-    return categories 
+async def sentence(utterances: List[Utterance]):
+    """
+    test sentencies for SpaCy classifier
+    """
+    categories = []
+    for utt in utterances:
+        cats = nlp_spacy(utt.text)._.cats
+        categories.append(cats)
+    return categories
 
 
 if __name__ == "__main__":
