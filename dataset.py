@@ -1,11 +1,6 @@
-#!/usr/bin/python
-
-import spacy
-import classy_classification
-
-from fastapi import FastAPI
-from typing import Optional
-from pydantic import BaseModel
+"""
+Training data for clasifiers
+"""
 
 data = {
     "get_devices": [
@@ -39,8 +34,8 @@ data = {
         'Change name, new device to kitchen sensor.',
         'Change new device to kitchen sensor', 'Re-name device with',
         'Re-name new-device with', 'Rename device sensor to',
-        'Rename device to', 'Rename device to kitchen sensor',
-        'Rename device with', 'Rename kitchen sensor with my new device',
+        'Re-name device to', 'Rename device to kitchen sensor',
+        'Re-name device with', 'Rename kitchen sensor with my new device',
         'Rename kitchen sensor with my sensor',
         'Rename kitchen sensor with my sensor.',
         'Rename my new device with bedroom sensor.', 'Rename sensor with',
@@ -75,29 +70,3 @@ data = {
         'What is the temperature?', 'Whats the temperature'
     ]
 }
-
-nlp = spacy.blank("en")
-nlp.add_pipe("text_categorizer",
-             config={
-                 "data": data,
-                 "model":
-                 "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
-                 "device": "gpu"
-             })
-
-
-class Utterance(BaseModel):
-    text: str
-    intent: Optional[str] = None
-
-app = FastAPI()
-
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-@app.post("/sentence")
-async def sentence(utterance: Utterance):
-    print(utterance.text)
-    categories = nlp(utterance.text)._.cats
-    return categories 
