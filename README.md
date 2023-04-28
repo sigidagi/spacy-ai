@@ -10,6 +10,9 @@ pip install -r requirements.txt
 
 ## Training
 
+[Spacy quickstart](https://spacy.io/usage/training#quickstart)
+
+
 ```
 ./train.sh
 ```
