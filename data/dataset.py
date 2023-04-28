@@ -1,7 +1,6 @@
 """
-Training data for clasifiers
+Just data 
 """
-
 data = {
     "get_devices": [
         'Device list.',
@@ -48,7 +47,9 @@ data = {
         'Tell me what is humidity at the moment.',
         'Tell me what is humidity in the room',
         'What is humidity in my room? How dry is in my room?',
-        'What is the humidity in my home?'
+        'What is the humidity in my home?',
+        'Is the humidity in my home at a comfortable level?',
+        'What is the humidity reading in my home right now?'
     ],
     "get_pressure": [
         'Pressure', 'What is pressure?', 'Show me pressure.',
@@ -65,7 +66,7 @@ data = {
         'Show me the temperature.', 'Temperature', 'Temperature in my room?',
         'Temperycie, w mojej rumie.',
         'What is a room temperature? What is the temperature? Show temperature!',
-        'What is temp in my room', 'What is temp in my room?',
+        'What is temp in my room',
         'What is the temperature', 'What is the temperature in my room?',
         'What is the temperature?', 'Whats the temperature'
     ]
