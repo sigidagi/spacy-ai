@@ -8,4 +8,4 @@ if [ $# != 2 ]; then
     exit 1
 fi
 
-curl -s -X POST -H "Content-Type: application/json" http://127.0.0.1:5000/"${ENDPOINT}" -d @"${FILE}" | jq .
+curl -s -X POST -H "Content-Type: application/json" http://127.0.0.1:7000/"${ENDPOINT}" -d @"${FILE}" | jq .

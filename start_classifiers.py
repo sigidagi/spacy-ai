@@ -2,7 +2,7 @@
 
 from typing import Optional, List
 import spacy
-import classy_classification
+#import classy_classification
 import uvicorn
 
 from fastapi import FastAPI
@@ -57,6 +57,5 @@ async def sentence(utterances: List[Utterance]):
         categories.append(cats)
     return categories
 
-
 if __name__ == "__main__":
-    uvicorn.run("start_classifiers:app", port=5000, log_level="info")
+    uvicorn.run("start_classifiers:app", port=7000, log_level="info")
