@@ -1,6 +1,5 @@
 FROM python:3.9
 MAINTAINER Sigitas Dagilis
-RUN echo 'we are running some # AI - classy classifier!'
 
 WORKDIR /home
 RUN apt-get update

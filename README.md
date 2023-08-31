@@ -34,7 +34,7 @@ It will use 'data/dataset.py' to create pre-trained model
 ### Docker
 ```
 docker build . -t classy-ai
-docker run -dit -p 7000:7000 classy-ai
+docker run -dit -p 7000:7000 classy-ai 
 docker exec -it <container-name> bash
 ```
 
@@ -42,6 +42,11 @@ docker exec -it <container-name> bash
 
 ```
 ./ask.sh spacy ./test/temperature.json
+```
+
+or 
+```
+curl -s -X POST -H "Content-Type: application/json" http://127.0.0.1:7000/spacy -d '[{"text": "How cold is it in my room?"}]'
 ```
 
 

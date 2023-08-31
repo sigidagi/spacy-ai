@@ -1,11 +1,11 @@
 #!/bin/sh
-ENDPOINT=$1
-FILE=$2
+#ENDPOINT=$1
+FILE=$1
 
-if [ $# != 2 ]; then
-    echo "Provide two arguments: 1. test endpoint 2. test file."
-    echo "Endpoints are: 'spacy'"
+if [ $# != 1 ]; then
+    echo "Provide one arguments: test file."
     exit 1
 fi
 
-curl -s -X POST -H "Content-Type: application/json" http://127.0.0.1:7000/"${ENDPOINT}" -d @"${FILE}" | jq .
+#curl -s -X POST -H "Content-Type: application/json" http://127.0.0.1:7000/"${ENDPOINT}" -d @"${FILE}" | jq .
+curl -s -X POST -H "Content-Type: application/json" http://khadas.local:7000/spacy -d @"${FILE}" | jq .

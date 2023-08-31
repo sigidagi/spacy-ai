@@ -24,12 +24,8 @@ def reset():
     Reset all labels
     """
     categories = {
-        'get_devices':0,
-        'bind_devices':0,
-        'change_name':0,
-        'get_humidity':0,
-        'get_pressure':0,
-        'get_temperature':0,
+        'set_on':0,
+        'set_off':0,
         'not_implemented':0,
         'out_of_scope':0,
     }
@@ -63,12 +59,8 @@ def convert_tobin(outfile, settype):
     """
     doc_bin = DocBin() # create a DocBin object
     category_list = [
-            'get_devices',
-            'bind_devices',
-            'change_name',
-            'get_humidity',
-            'get_pressure',
-            'get_temperature',
+            'set_on',
+            'set_off',
             'not_implemented',
             'out_of_scope',
     ]

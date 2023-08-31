@@ -58,4 +58,4 @@ async def sentence(utterances: List[Utterance]):
     return categories
 
 if __name__ == "__main__":
-    uvicorn.run("start_classifiers:app", port=7000, log_level="info")
+    uvicorn.run("start_classifiers:app", host='0.0.0.0', port=7000, log_level="info")
